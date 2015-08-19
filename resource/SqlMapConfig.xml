@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN " "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	
+	<!-- settings -->
+	<settings useStatementNamespaces="true" />
+	
+	<!-- sql mapping fiels -->
+	<sqlMap resource="emaillist.xml" />
+	<!-- mysite할때 이렇게 여러개 만들어서 하면 관리하기 쉽고 작업나눌때도 좋다.
+	<sqlMap resource="user.xml" />
+	<sqlMap resource="board.xml" />
+	<sqlMap resource="guestbook.xml" /> -->
+	
+</sqlMapConfig>

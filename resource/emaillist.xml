@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="emaillist">
+	<typeAlias alias="EmailListVo" type="com.bit2015.emaillist3.vo.EmailListVo" />
+	<!-- alias="EmailListVo" 풀네임 적어줘야 하지만 이걸로 쓰겠다 함. -->
+	<!-- vo와 sql의 칼럼 이름이 다를경우 처리방법 resultMap -->
+	<resultMap class="EmailListVo" id="resultMapList">
+		<result column="no" property="no" />
+		<result column="first_name" property="firstName" />
+		<result column="last_name" property="lastName" />
+		<result column="email" property="email" />
+	</resultMap>
+
+	<insert id="insert" parameterClass="EmailListVo">
+		<![CDATA[
+		insert 
+		  into email_list 
+		  values ( email_list_no_seq.nextval, #firstName#, #lastName#, #email# )
+		]]>
+	</insert>
+
+	<!-- <insert id="insert2" parameterClass="EmailListVo">
+		<selectKey keyProperty="no" resultClass="java.lang.Long">
+		<![CDATA[select board_no_seq.nextval as no from dual]]>
+		</selectKey>
+		
+		<![CDATA[
+		insert 
+		  into board 
+		values ( #no#, #title#, #content#, #memberNo#, #memberName#, 0, SYSDATE )
+		]]>
+	</insert> -->
+
+
+
+	<delete id="delete" parameterClass="java.lang.Long">
+		<![CDATA[
+		delete
+		  from email_list 
+		 where no = #no#
+		]]>
+	</delete>
+
+	<!-- <delete id="deletebyname" parameterClass="java.util.Map"> <![CDATA[ 
+		delete from email_list where first_name = #fn# and last_name = #ln# ]]> </delete> -->
+
+
+
+	<select id="list" resultMap="resultMapList">
+		<![CDATA[
+		select *from email_list
+		]]>
+	</select>
+</sqlMap> 
